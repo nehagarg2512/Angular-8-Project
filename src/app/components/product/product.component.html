@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center">Product</h1>
+  <div class="form-inline">
+    <div class="col-sm-6">Image</div>
+    <div class="col-sm-6"><img [src]="product?.imageUrl" /></div>
+  </div>
+  <div class="form-inline">
+    <div class="col-sm-6">Name</div>
+    <div class="col-sm-6">{{ product?.productName }}</div>
+  </div>
+  <div class="form-inline">
+    <div class="col-sm-6">Price</div>
+    <div class="col-sm-6">{{ product?.price }}</div>
+  </div>
+  <div class="form-inline">
+    <div class="col-sm-6">Description</div>
+    <div class="col-sm-6">{{ product?.description }}</div>
+  </div>
+  <div class="form-inline">
+    <div class="col-sm-6">code</div>
+    <div class="col-sm-6">{{ product?.productCode }}</div>
+  </div>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['description']"
+        >Description<span class="sr-only">(current)</span></a
+      >
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

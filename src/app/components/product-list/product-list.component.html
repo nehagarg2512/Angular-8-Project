@@ -1,0 +1,59 @@
+<h1 class="text-center">Product List</h1>
+<div class="form-inline">
+  <input
+    type="text"
+    placeholder="search.."
+    class="form-control"
+    [(ngModel)]="searchText"
+  />
+  <i class="fa fa-search" (click)="searchClick()"></i>
+  <div class="col-md-6 text-right">
+    <p>{{ childData }}</p>
+  </div>
+</div>
+
+<div>
+  <input type="text" #myInput />
+  <button (click)="onClicked(myInput.value)">Log</button>
+  <label>{{ dynVal }}</label>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <button (click)="onClick()" class="btn btn-default">
+          {{ btntxt }}
+        </button>
+      </th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Release Date</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of filteredProducts">
+      <td>
+        <img src="{{ item.imageUrl }}" *ngIf="showImg" />
+      </td>
+      <td>
+        <a [routerLink]="['/product', item.productId]" class="pointer">{{
+          item.productName
+        }}</a>
+      </td>
+      <td>{{ item.productCode | dashToSpace: " " }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.releaseDate }}</td>
+      <td>{{ item.price | currency: "INR" }}</td>
+      <td>
+        <app-rating
+          [star_Rating]="item.starRating"
+          (notify)="parentMethod($event)"
+        ></app-rating>
+      </td>
+    </tr>
+  </tbody>
+</table>
